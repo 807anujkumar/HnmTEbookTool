@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🛠 XHTML Accessibility Enhancer</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.0/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <style>
+    :root {
+      --primary: #4caf50;
+      --secondary: #f4f6f8;
+      --text: #333;
+      --light: #ffffff;
+      --border: #ddd;
+      --hover: #e8f5e9;
+      --highlight: #dcedc8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--secondary);
+      color: var(--text);
+      padding: 40px;
+      margin: 0;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 35px;
+      color: #2e7d32;
+    }
+
+    input[type="file"] {
+      display: block;
+      margin: 0 auto 20px auto;
+      padding: 15px;
+      border: 2px dashed var(--primary);
+      border-radius: 10px;
+      background-color: var(--light);
+      text-align: center;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    input[type="file"]:hover {
+      background-color: #f0fff3;
+      border-color: #388e3c;
+    }
+
+    button {
+      display: block;
+      margin: 0 auto 30px;
+      padding: 12px 30px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #fff;
+      background: linear-gradient(to top, #388e3c, #4caf50);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(76, 175, 80, 0.2);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    button:hover {
+      background: linear-gradient(to bottom, #66bb6a, #2e7d32);
+      transform: translateY(-1px);
+    }
+
+    .log {
+      background-color: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 35px;
+      max-height: 250px;
+      overflow-y: auto;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    th, td {
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      text-align: left;
+      font-size: 14px;
+      transition: background-color 0.2s ease;
+    }
+
+    th {
+      background-color: #f1f8e9;
+      font-weight: 600;
+      color: #2e7d32;
+    }
+
+    tbody td:hover {
+      background-color: var(--highlight);
+      cursor: pointer;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #fbfbfb;
+    }
+
+    @media (max-width: 768px) {
+      th, td {
+        font-size: 13px;
+        padding: 10px;
+      }
+
+      button {
+        width: 100%;
+        font-size: 15px;
+      }
+
+      input[type="file"] {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🛠 XHTML Accessibility Enhancer - Before and After</h2>
+
+  <input type="file" id="fileInput" webkitdirectory directory multiple />
+  <button onclick="processFiles()">🚀 Process & Download</button>
+
+  <div class="log" id="logBox">Log will appear here...</div>
+
+  <table id="changesTable">
+    <thead>
+      <tr>
+        <th>📄 File</th>
+        <th>🔧 Change Type</th>
+        <th>❌ Before</th>
+        <th>✅ After</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Log rows will be inserted here -->
+    </tbody>
+  </table>
+
+  <script src="index.js"></script>
+
+</body>
+</html>
