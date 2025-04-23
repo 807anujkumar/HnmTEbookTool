@@ -1,4 +1,4 @@
-function mergeLessonHeadingsAuto(doc) {
+  function mergeLessonHeadingsAuto(doc) {
     // Get all h2 elements
     const headings = Array.from(doc.querySelectorAll("h2"));
 
@@ -99,7 +99,16 @@ let selectedFiles = [];
                 const beforeChange = ul.outerHTML;
 
                 ul.removeAttribute("class");
-                ul.querySelectorAll(":scope > li").forEach((li) => li.classList.add("s1"));
+                ul.querySelectorAll(":scope > li").forEach((li)=>{
+                  li.classList.add("s1");
+                  
+        // ✅ Remove leading space just before bullet or content
+        const firstNode = li.firstChild;
+        if (firstNode && firstNode.nodeType === 3) {
+            firstNode.textContent = firstNode.textContent.replace(/^\s+/, '');
+        }
+    });
+               
 
                 const afterChange = ul.outerHTML;
                 addChangeLog(file.name, "UL.s1 Modification", beforeChange, afterChange);
@@ -112,7 +121,13 @@ let selectedFiles = [];
                 const beforeChange = ol.outerHTML;
 
                 ol.removeAttribute("class");
-                ol.querySelectorAll(":scope > li").forEach((li) => li.classList.add("s1"));
+                ol.querySelectorAll(":scope > li").forEach((li)=>{
+                   li.classList.add("s1");
+                   const firstNode = li.firstChild;
+                   if (firstNode && firstNode.nodeType === 3) {
+                       firstNode.textContent = firstNode.textContent.replace(/^\s+/, '');
+                   }
+                  });
 
                 const afterChange = ol.outerHTML;
                 addChangeLog(file.name, "OL.s1 Modification", beforeChange, afterChange);
